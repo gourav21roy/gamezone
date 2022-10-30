@@ -5,7 +5,7 @@ import { SplashComponent } from './splash/splash.component';
 import { TictactoeComponent } from './tictactoe/tictactoe.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'tictactoe', component: TictactoeComponent },
   { path: 'home', component: SplashComponent }
