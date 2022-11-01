@@ -1,3 +1,33 @@
-<div>
-  <p>This is dashboard</p>
+<div
+  class="flex flex-col justify-evenly justify-items-center gap-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-screen border-solid border-2 border-white">
+  <div class="logo flex h-1/5 justify-center  bg-white bg-opacity-20">
+    <img src="./assets/logo.svg" class="h-full  lg:h-4/5">
+  </div>
+  <div class="carousel justify-evenly flex flex-row w-screen">
+    <div class="left align-middle flex items-center">
+      <button class="nav flex bg-white rounded-full h-20 items-center justify-center w-20 font-mono">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 justify-center">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+        </svg>
+      </button>
+    </div>
+    <!-- <ng-container *ngFor="let slide of slides;">
+      <img [src]="slide.src" class="slide" />
+    </ng-container> -->
+    <div class="tile ml-10 mr-10">
+      <a routerLink="{{slides[0].route}}">
+      <img src="{{slides[0].src}}" class="slide h-full bg-black rounded-full hover:opacity-70" />
+      </a>
+    </div>
+    <div class="right flex items-center">
+      <button class="nav flex items-center justify-center bg-white rounded-full h-20 w-20 font-mono">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="footer h-1/5">
+    <!-- I am footer -->
+  </div>
 </div>

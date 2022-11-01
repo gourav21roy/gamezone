@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .bg-screen-gradient-border {
+    @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-screen border-solid border-2 border-white;
+  }
+}
