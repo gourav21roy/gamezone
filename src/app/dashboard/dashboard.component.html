@@ -1,33 +1,41 @@
 <div
-  class="flex flex-col justify-evenly justify-items-center gap-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-screen border-solid border-2 border-white">
-  <div class="logo flex h-1/5 justify-center  bg-white bg-opacity-20">
+  class="flex flex-col h-screen w-screen justify-between justify-items-center gap-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  border-solid border-2 border-white">
+  <div class="logo flex h-1/5 w-full justify-center  bg-white bg-opacity-20">
     <img src="./assets/logo.svg" class="h-full  lg:h-4/5">
   </div>
-  <div class="carousel justify-evenly flex flex-row w-screen">
-    <div class="left align-middle flex items-center">
-      <button class="nav flex bg-white rounded-full h-20 items-center justify-center w-20 font-mono">
+  <div class="carousel flex h-4/6 w-full">
+    <!-- <div class="left align-middle flex items-center">
+      <button disabled="true" class="nav flex bg-gray-400 rounded-full h-20 items-center justify-center w-20 font-mono">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 justify-center">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
         </svg>
       </button>
-    </div>
+    </div> -->
     <!-- <ng-container *ngFor="let slide of slides;">
       <img [src]="slide.src" class="slide" />
     </ng-container> -->
-    <div class="tile ml-10 mr-10">
-      <a routerLink="{{slides[0].route}}">
-      <img src="{{slides[0].src}}" class="slide h-full bg-black rounded-full hover:opacity-70" />
-      </a>
+    <div class="tile flex h-3/5 justity-start md:justify-center flex-col md:flex-row w-full m-2 md:m-0 overflow-x-auto">
+      <ng-container *ngFor="let slide of slides;">
+        <a *ngIf="!isDisabled(slide)" routerLink="{{slide.route}}" class="self-center">
+          <img src="{{slide.src}}" class="slide self-center bg-white p-5 m-1 h-64 rounded-lg hover:opacity-70" />
+        </a>
+        <a *ngIf="isDisabled(slide)" class="self-center disabled cursor-not-allowed">
+          <img src="{{slide.src}}" class="slide self-center bg-white p-5 m-1 h-64 rounded-lg hover:opacity-70" />
+        </a>
+      </ng-container>
     </div>
-    <div class="right flex items-center">
-      <button class="nav flex items-center justify-center bg-white rounded-full h-20 w-20 font-mono">
+    <!-- <div class="right flex items-center">
+      <button disabled="true"  class="nav flex items-center justify-center bg-gray-400 rounded-full h-20 w-20 font-mono">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
         </svg>
       </button>
-    </div>
+    </div> -->
   </div>
-  <div class="footer h-1/5">
-    <!-- I am footer -->
+  <div class="footer text-center h-auto w-full  bg-white bg-opacity-20">
+    <a class="hover:text-white text-gray-600" routerLink="/about">
+      <span>About</span>
+    </a>
+    <span> | 2022 | GamezoneX |</span>
   </div>
 </div>

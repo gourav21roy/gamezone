@@ -9,6 +9,7 @@ import { TictactoeComponent } from './tictactoe/tictactoe.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { InprogressComponent } from './inprogress/inprogress.component';
+import { AboutmeComponent } from './aboutme/aboutme.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { InprogressComponent } from './inprogress/inprogress.component';
     SplashComponent,
     DashboardComponent,
     TictactoeComponent,
-    InprogressComponent
+    InprogressComponent,
+    AboutmeComponent
   ],
   imports: [
     BrowserModule,

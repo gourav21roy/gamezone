@@ -7,15 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  slides: any[] = new Array(3).fill({id: -1, src: '', title: '', route: ''});
+  slides: any[] = new Array(2).fill({id: -1, src: '', title: '', route: '', disabled: false});
 
   constructor() { }
 
   ngOnInit(): void {
     this.slides[0] = {
       src: './assets/ttt.png',
-      route: '/maintenance'
+      route: '/maintenance',
+      disabled: true
     };
+    this.slides[1] = {
+      src: './assets/coming-soon.png',
+      route: '',
+      disabled: true
+    }
     // this.slides[1] = {
     //   src: './assets/ttt.png',
     // }
@@ -30,6 +36,10 @@ export class DashboardComponent implements OnInit {
 
   gotoTile(tile: any){
     console.log(tile.src);
+  }
+
+  isDisabled(slide: any){
+    return slide.disabled;
   }
 
 }
