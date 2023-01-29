@@ -14,7 +14,7 @@
     <!-- <ng-container *ngFor="let slide of slides;">
       <img [src]="slide.src" class="slide" />
     </ng-container> -->
-    <div class="tile flex h-3/5 justity-start md:justify-center flex-col md:flex-row w-full m-2 md:m-0 overflow-x-auto">
+    <div class="tile flex h-full justity-start md:justify-center flex-col md:flex-row w-full m-2 md:m-0 overflow-x-auto">
       <ng-container *ngFor="let slide of slides;">
         <a *ngIf="!isDisabled(slide)" routerLink="{{slide.route}}" class="self-center">
           <img src="{{slide.src}}" class="slide self-center bg-white p-5 m-1 h-64 rounded-lg hover:opacity-70" />

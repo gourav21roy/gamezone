@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
     this.slides[0] = {
       src: './assets/ttt.png',
       route: '/maintenance',
-      disabled: true
+      disabled: false
     };
     this.slides[1] = {
       src: './assets/coming-soon.png',
