@@ -22,19 +22,18 @@ export class TictactoeComponent implements OnInit {
     this.board = [['', '', ''], ['', '', ''], ['', '', '']];
     this.numberOfSquareSelected = 0;
     this.currentPlayer = 'X';
+    this.winner = '';
   }
 
   move(x: number, y: number): void {
     console.log("moved");
-    if (this.clickable(x, y) && this.winner=='') {
+    if (this.clickable(x, y) && this.winner == '') {
       this.numberOfSquareSelected++;
       this.board[x][y] = this.currentPlayer;
       this.checkForWin();
       this.changeCurrentPlayer();
     }
-    // if (this.winner != '') {
-    //   alert('Winner is' + this.winner);
-    // }
+
   }
 
   checkForWin() {
@@ -61,7 +60,7 @@ export class TictactoeComponent implements OnInit {
       this.winner = this.currentPlayer;
       return;
     }
-    
+
 
   }
 
@@ -78,6 +77,16 @@ export class TictactoeComponent implements OnInit {
     }
     return true;
   }
+
+  getImage(x: number, y: number): string{
+    if(this.board[x][y]=='O')
+      return "./assets/circle.png";
+    else if(this.board[x][y]=='X')
+      return "./assets/cross.png";
+
+    return "";
+  }
+
 }
 
 

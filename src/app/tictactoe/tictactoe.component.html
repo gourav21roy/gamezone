@@ -3,33 +3,45 @@
   <div class="logo flex h-1/5 w-full justify-center  bg-white bg-opacity-20">
     <img src="./assets/logo.svg" class="h-full  lg:h-4/5">
   </div>
-  <div class="flex md:flex-row flex-col justify-center container h-full  bg-opacity-50 bg-white w-full">
-    <div class="gameside m-3 p-4 flex flex-col rounded-md md:h-3/4 h-4/5 justify-center bg-gray-200 ">
-      <div class="box self-center divide-y-4  divide-slate-700">
+  <div class="flex flex-col justify-center items-center self-stretch md:ml-10 container h-full  bg-opacity-50 bg-white w-full">
+    <div class="gameside md:w-1/4 md:justify-around w-full m-1 p-4 flex flex-col rounded-md h-4/5 justify-center bg-gray-200 ">
+      <div class="box text-4xl font-sans font-bold text-rose-500 self-center divide-y-4  divide-slate-700">
         <div class="flex flex-row row divide-x-4 divide-slate-700">
-          <div class="1 p-8 w-16 h-16" (click)="move(0,0)">{{board[0][0]}}</div>
-          <div class="2 p-8 w-16 h-16" (click)="move(0,1)">{{board[0][1]}}</div>
-          <div class="3 p-8 w-16 h-16" (click)="move(0,2)">{{board[0][2]}}</div>
+          <div class="1 p-8 w-20 h-20" (click)="move(0,0)">{{board[0][0]}}</div>
+          <div class="2 p-8 w-20 h-20" (click)="move(0,1)">{{board[0][1]}}</div>
+          <div class="3 p-8 w-20 h-20" (click)="move(0,2)">{{board[0][2]}}</div>
         </div>
         <div class="flex flex-row row divide-x-4 divide-slate-700">
-          <div class="4 p-8 w-16 h-16" (click)="move(1,0)">{{board[1][0]}}</div>
-          <div class="5 p-8 w-16 h-16" (click)="move(1,1)">{{board[1][1]}}</div>
-          <div class="6 p-8 w-16 h-16" (click)="move(1,2)">{{board[1][2]}}</div>
+          <div class="4 p-8 w-20 h-20" (click)="move(1,0)">{{board[1][0]}}</div>
+          <div class="5 p-8 w-20 h-20" (click)="move(1,1)">{{board[1][1]}}</div>
+          <div class="6 p-8 w-20 h-20" (click)="move(1,2)">{{board[1][2]}}</div>
         </div>
         <div class="flex flex-row row divide-x-4 divide-slate-700">
-          <div class="7 p-8 w-16 h-16" (click)="move(2,0)">{{board[2][0]}}</div>
-          <div class="8 p-8 w-16 h-16" (click)="move(2,1)">{{board[2][1]}}</div>
-          <div class="9 p-8 w-16 h-16" (click)="move(2,2)">{{board[2][2]}}</div>
+          <div class="7 p-8 w-20 h-20" (click)="move(2,0)">{{board[2][0]}}</div>
+          <div class="8 p-8 w-20 h-20" (click)="move(2,1)">{{board[2][1]}}</div>
+          <div class="9 p-8 w-20 h-20" (click)="move(2,2)">{{board[2][2]}}</div>
         </div>
       </div>
-    </div>
-    <div class="info md:w-1/2 bg-gray-200 font-medium rounded-md m-3 p-4 md:h-3/4 h-1/5 text-lg">
-      <div class="activeplayer" *ngIf="winner==''">Active Player : {{currentPlayer}}</div>
+
+     <div class="info m-5">
+      <div class="activeplayer" *ngIf="winner=='' && numberOfSquareSelected!=9">Next Move : {{currentPlayer}}</div>
       <div class="celebration" *ngIf="winner!=''">
         Winner is : {{winner}}
       </div>
-      <div class="options">Options</div>
-      
+      <div class="tie" *ngIf="winner=='' && numberOfSquareSelected==9">
+        Tie ! Restarting next round.
+      </div>
+     </div>
     </div>
+
+    <div class="options flex flex-row justify-evenly md:w-1/4 w-full bg-gray-500 bg-opacity-40 md:rounded-md align-middle p-3 h-1/5 ">
+      <div class="home m-2">
+        <img routerLink="/dashboard" class="w-14 h-14 border-solid border-2 rounded-2xl hover:opacity-60" src="./assets/home-button.png">
+      </div>
+      <div class="restart m-2">
+        <img (click)="resetBoard()" class="w-14 h-14 border-solid border-2 rounded-full hover:opacity-60 " src="./assets/restart.png">
+      </div>
+    </div>
+
   </div>
 </div>
