@@ -1,45 +1,76 @@
 <div
-  class="flex flex-col h-screen w-screen  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  border-solid border-2 border-white">
+  class="flex flex-col h-screen w-screen md:overflow-hidden  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  border-solid border-2 border-white">
   <div class="logo flex h-1/5 w-full justify-center  bg-white bg-opacity-20">
     <img src="./assets/logo.svg" class="h-full  lg:h-4/5">
   </div>
-  <div class="flex flex-col justify-center items-center self-stretch md:ml-10 container h-full  bg-opacity-50 bg-white w-full">
-    <div class="gameside md:w-1/4 md:justify-around w-full m-1 p-4 flex flex-col rounded-md h-4/5 justify-center bg-gray-200 ">
-      <div class="box text-4xl font-sans font-bold text-rose-500 self-center divide-y-4  divide-slate-700">
-        <div class="flex flex-row row divide-x-4 divide-slate-700">
-          <div class="1 p-8 w-20 h-20" (click)="move(0,0)">{{board[0][0]}}</div>
-          <div class="2 p-8 w-20 h-20" (click)="move(0,1)">{{board[0][1]}}</div>
-          <div class="3 p-8 w-20 h-20" (click)="move(0,2)">{{board[0][2]}}</div>
+  <div
+    class="flex flex-col justify-center items-center self-stretch md:ml-10 container h-full  bg-opacity-50 bg-white w-full">
+    <div
+      class="gameside md:w-1/4 md:justify-around w-full m-1 p-4 flex flex-col rounded-md h-4/5 justify-center bg-gray-200 ">
+
+      <div class="flex flex-row justify-between score">
+        <div [ngClass]="getActiveStyle('X')"
+          class="flex font-sans font-semibold flex-row justify-between scoreX border border-solid rounded-md p-1 border-black w-2/5 m-4 ">
+          <div class="labelX">X</div>
+          <div *ngIf="winX>0" class="valueX">{{winX}}</div>
+          <div *ngIf="winX==0" class="valueX">-</div>
         </div>
-        <div class="flex flex-row row divide-x-4 divide-slate-700">
-          <div class="4 p-8 w-20 h-20" (click)="move(1,0)">{{board[1][0]}}</div>
-          <div class="5 p-8 w-20 h-20" (click)="move(1,1)">{{board[1][1]}}</div>
-          <div class="6 p-8 w-20 h-20" (click)="move(1,2)">{{board[1][2]}}</div>
-        </div>
-        <div class="flex flex-row row divide-x-4 divide-slate-700">
-          <div class="7 p-8 w-20 h-20" (click)="move(2,0)">{{board[2][0]}}</div>
-          <div class="8 p-8 w-20 h-20" (click)="move(2,1)">{{board[2][1]}}</div>
-          <div class="9 p-8 w-20 h-20" (click)="move(2,2)">{{board[2][2]}}</div>
+        <div [ngClass]="getActiveStyle('O')"
+          class="flex font-sans font-semibold flex-row justify-between scoreO border border-solid rounded-md p-1 border-black w-2/5 m-4 ">
+          <div class="labelO">O</div>
+          <div *ngIf="winO>0" class="valueO">{{winO}}</div>
+          <div *ngIf="winO==0" class="valueO">-</div>
         </div>
       </div>
 
-     <div class="info m-5">
-      <div class="activeplayer" *ngIf="winner=='' && numberOfSquareSelected!=9">Next Move : {{currentPlayer}}</div>
-      <div class="celebration" *ngIf="winner!=''">
-        Winner is : {{winner}}
+      <div class="box text-4xl font-sans font-bold self-center divide-y-4  divide-slate-700">
+        <div class="flex flex-row row divide-x-4 divide-slate-700">
+          <div [ngClass]="getTextStyle(0,0)" class="1 p-8 w-20 h-20" (click)="move(0,0)">{{board[0][0]}}</div>
+          <div [ngClass]="getTextStyle(0,1)" class="2 p-8 w-20 h-20" (click)="move(0,1)">{{board[0][1]}}</div>
+          <div [ngClass]="getTextStyle(0,2)" class="3 p-8 w-20 h-20" (click)="move(0,2)">{{board[0][2]}}</div>
+        </div>
+        <div class="flex flex-row row divide-x-4 divide-slate-700">
+          <div [ngClass]="getTextStyle(1,0)" class="4 p-8 w-20 h-20" (click)="move(1,0)">{{board[1][0]}}</div>
+          <div [ngClass]="getTextStyle(1,1)" class="5 p-8 w-20 h-20" (click)="move(1,1)">{{board[1][1]}}</div>
+          <div [ngClass]="getTextStyle(1,2)" class="6 p-8 w-20 h-20" (click)="move(1,2)">{{board[1][2]}}</div>
+        </div>
+        <div class="flex flex-row row divide-x-4 divide-slate-700">
+          <div [ngClass]="getTextStyle(2,0)" class="7 p-8 w-20 h-20" (click)="move(2,0)">{{board[2][0]}}</div>
+          <div [ngClass]="getTextStyle(2,1)" class="8 p-8 w-20 h-20" (click)="move(2,1)">{{board[2][1]}}</div>
+          <div [ngClass]="getTextStyle(2,2)" class="9 p-8 w-20 h-20" (click)="move(2,2)">{{board[2][2]}}</div>
+        </div>
       </div>
-      <div class="tie" *ngIf="winner=='' && numberOfSquareSelected==9">
-        Tie ! Restarting next round.
+
+      <div class="info self-center font-sans font-normal text-base m-5">
+        <div class="activeplayer" *ngIf="winner=='' && numberOfSquareSelected!=9">{{currentPlayer}}'s turn</div>
+        <div class="celebration" *ngIf="winner!=''">
+          Winner is : {{winner}}
+        </div>
+        <div class="tie" *ngIf="winner=='' && numberOfSquareSelected==9">
+          Tie ! Restarting next round.
+        </div>
       </div>
-     </div>
     </div>
 
-    <div class="options flex flex-row justify-evenly md:w-1/4 w-full bg-gray-500 bg-opacity-40 md:rounded-md align-middle p-3 h-1/5 ">
+    <div
+      class="options flex flex-row justify-evenly md:w-1/4 w-full bg-gray-500 bg-opacity-40 md:rounded-md align-middle p-3 h-1/5 ">
       <div class="home m-2">
-        <img routerLink="/dashboard" class="w-14 h-14 border-solid border-2 rounded-2xl hover:opacity-60" src="./assets/home-button.png">
+        <img routerLink="/dashboard"
+          class="w-14 h-14 border-solid border-2 rounded-2xl hover:shadow-sm hover:shadow-black shadow-black shadow-md"
+          src="./assets/home-button.png">
       </div>
       <div class="restart m-2">
-        <img (click)="resetBoard()" class="w-14 h-14 border-solid border-2 rounded-full hover:opacity-60 " src="./assets/restart.png">
+        <img (click)="resetBoard()"
+          class="w-14 h-14 border-solid border-2 rounded-full hover:shadow-sm hover:shadow-black shadow-black shadow-md"
+          src="./assets/restart.png">
+      </div>
+      <div class="nextRound m-2">
+        <img *ngIf="this.winner != '' || this.numberOfSquareSelected == 9" (click)="nextRound()"
+          class="w-14 h-14 border-solid border-2 rounded-full hover:shadow-sm hover:shadow-black shadow-black shadow-md"
+          src="./assets/nextRound.png">
+        <img *ngIf="this.winner == '' && this.numberOfSquareSelected != 9"
+          class="w-14 h-14 border-solid border-2 rounded-full bg-slate-800 opacity-40 shadow-black shadow-md"
+          src="./assets/nextRound.png">
       </div>
     </div>
 

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  slides: any[] = new Array(2).fill({id: -1, src: '', title: '', route: '', disabled: false});
+  slides: any[] = new Array().fill({id: -1, src: '', title: '', route: '', desc: '', disabled: false});
 
   constructor() { }
 
@@ -15,19 +15,34 @@ export class DashboardComponent implements OnInit {
     this.slides[0] = {
       src: './assets/ttt.png',
       route: '/tictactoe',
+      desc: 'Classic Tic-Tac-Toe',
       disabled: false
     };
     this.slides[1] = {
       src: './assets/coming-soon.png',
       route: '',
+      desc: 'More games coming soon',
       disabled: true
     }
-    // this.slides[1] = {
-    //   src: './assets/ttt.png',
-    // }
     // this.slides[2] = {
-    //   src: './assets/tictac.png',
+    //   src: './assets/coming-soon.png',
+    //   route: '',
+    //   desc: 'More games coming soon',
+    //   disabled: true
     // }
+    // this.slides[3] = {
+    //   src: './assets/coming-soon.png',
+    //   route: '',
+    //   desc: 'More games coming soon',
+    //   disabled: true
+    // }
+    // this.slides[4] = {
+    //   src: './assets/coming-soon.png',
+    //   route: '',
+    //   desc: 'More games coming soon',
+    //   disabled: true
+    // }
+
   }
 
   onItemChange($event: any): void {
