@@ -7,12 +7,13 @@ import { SplashComponent } from './splash/splash.component';
 import { TictactoeComponent } from './tictactoe/tictactoe.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+
   { path: 'dashboard', component: DashboardComponent },
   { path: 'tictactoe', component: TictactoeComponent },
   { path: 'home', component: SplashComponent },
   { path: 'maintenance', component: InprogressComponent},
-  { path: 'about', component: AboutmeComponent}
+  { path: 'about', component: AboutmeComponent},
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
